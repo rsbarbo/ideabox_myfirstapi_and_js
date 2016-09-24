@@ -9,6 +9,8 @@ class Api::V1::IdeasController < ApplicationController
     render json: @idea.update(idea_params)
   end
 
+  def create
+  end
 
   private
 

@@ -21,11 +21,11 @@ class Index {
 
   getIdeas() {
     $.getJSON('/api/v1/ideas')
-      .then(response => {
-        this.ideas = response.sort((a, b) => a.id < b.id)
-        const validHTML = this.createIdeas(response)
-        this.appendTo(validHTML)
-      })
+    .then(response => {
+      this.ideas = response.sort((a, b) => a.id < b.id)
+      const validHTML = this.createIdeas(response)
+      this.appendTo(validHTML)
+    })
   }
 
   handleUpdateQuality(e) {
@@ -35,14 +35,18 @@ class Index {
       const buttonText = e.target.textContent
       if (buttonText === 'Up') idea.quality = this.up[idea.quality]
       if (buttonText === 'Down') idea.quality = this.down[idea.quality]
-      $.ajax({
-        type: "PATCH",
-        url: `/api/v1/ideas/${ideaId}`,
-        data: idea,
-        success: response => {
-          this.getIdeas()
-        }
-      });
+      this.updateIdea(idea, ideaId)
+    })
+  }
+
+  updateIdea(idea, id) {
+    $.ajax({
+      type: "PATCH",
+      url: `/api/v1/ideas/${id}`,
+      data: idea,
+      success: response => {
+        this.getIdeas()
+      }
     })
   }
 
