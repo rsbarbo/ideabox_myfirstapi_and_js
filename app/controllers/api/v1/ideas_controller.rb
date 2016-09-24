@@ -14,6 +14,11 @@ class Api::V1::IdeasController < ApplicationController
     render json: @idea.save
   end
 
+  def delete
+    byebug
+    @idea = Idea.find(params[:id]).destroy
+  end
+
   private
 
   def idea_params

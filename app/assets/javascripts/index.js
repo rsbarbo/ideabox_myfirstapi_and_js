@@ -17,9 +17,40 @@ class Index {
     }
     this.ideas = []
     this.getIdeas()
+    this.handleSubmit()
   }
 
   createIdeas() {
+    const title = $("#title")[0].value
+    const body = $("#body")[0].value
+    $.ajax({
+      type: "POST",
+      url: '/api/v1/ideas',
+      data: {
+        title: title,
+        body: body,
+        quality: "swill"
+      },
+      success: response => {
+        this.getIdeas()
+      }
+    })
+  }
+
+  handleSubmit() {
+    $("#submit-idea").on("click", () => {
+      this.createIdeas()
+    })
+  }
+
+  deleteIdea(id) {
+    $.ajax({
+      type: "DELETE",
+      url: `api/v1/ideas/${id}`,
+      success: response => {
+        this.getIdeas()
+      }
+    })
   }
 
   getIdeas() {
@@ -38,6 +69,7 @@ class Index {
       const buttonText = e.target.textContent
       if (buttonText === 'Up') idea.quality = this.up[idea.quality]
       if (buttonText === 'Down') idea.quality = this.down[idea.quality]
+      if (buttonText === 'Delete') this.deleteIdea(ideaId)
       this.updateIdea(idea, ideaId)
     })
   }
@@ -62,6 +94,7 @@ class Index {
       <h3>${idea.quality}</h3>
       <button>Up</button>
       <button>Down</button>
+      <button>Delete</button>
       <hr>
       </div>
       `
