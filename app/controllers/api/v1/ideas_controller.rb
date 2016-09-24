@@ -10,6 +10,8 @@ class Api::V1::IdeasController < ApplicationController
   end
 
   def create
+    @idea = Idea.new(idea_params)
+    render json: @idea.save
   end
 
   private

@@ -23,7 +23,7 @@ class Index {
     $.getJSON('/api/v1/ideas')
     .then(response => {
       this.ideas = response.sort((a, b) => a.id < b.id)
-      const validHTML = this.createIdeas(response)
+      const validHTML = this.generateIdeasInHtml(response)
       this.appendTo(validHTML)
     })
   }
@@ -50,7 +50,7 @@ class Index {
     })
   }
 
-  createIdeas() {
+  generateIdeasInHtml() {
     return this.ideas.map(idea =>
       `
       <div id="idea" data-id=${idea.id}>
