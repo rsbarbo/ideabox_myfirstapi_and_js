@@ -19,6 +19,9 @@ class Index {
     this.getIdeas()
   }
 
+  createIdeas() {
+  }
+
   getIdeas() {
     $.getJSON('/api/v1/ideas')
     .then(response => {
