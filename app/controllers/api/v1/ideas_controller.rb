@@ -23,5 +23,4 @@ class Api::V1::IdeasController < ApplicationController
   def idea_params
     params.permit(:title, :body, :quality)
   end
-
 end
