@@ -1,24 +1,13 @@
-# README
+# IdeaBox (Exploring APIs, JS, and JQuery)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project covers my first attempt to create a functional program with JS, JQuery, and serving an API with Ruby on Rails:
 
-Things you may want to cover:
+* Ruby version: ruby 2.3.1p112
+* Rails version: Rails 5.0.0.1
 
-* Ruby version
+The project is fully functional, and I have succeeded in my attempt. For more info, please visit:
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Thank you;
+Raphael Barbo
+ 
